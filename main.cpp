@@ -69,16 +69,16 @@ int main(void)
                 }
             }
 
-            if (IsKeyPressed(KEY_DOWN)) {
+            if (IsKeyPressed(KEY_DOWN) && snake.vel.y != -1) {
                 snake.vel.x = 0;
                 snake.vel.y = 1;
-            } else if (IsKeyPressed(KEY_UP)) {
+            } else if (IsKeyPressed(KEY_UP) && snake.vel.y != 1) {
                 snake.vel.x = 0;
                 snake.vel.y = -1;
-            } else if (IsKeyPressed(KEY_RIGHT)) {
+            } else if (IsKeyPressed(KEY_RIGHT) && snake.vel.x != -1) {
                 snake.vel.y = 0;
                 snake.vel.x = 1;
-            } else if (IsKeyPressed(KEY_LEFT)) {
+            } else if (IsKeyPressed(KEY_LEFT) && snake.vel.x != 1) {
                 snake.vel.y = 0;
                 snake.vel.x = -1;
             }
