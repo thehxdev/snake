@@ -1,0 +1,10 @@
+/.cache/
+/.vs/
+/raylib/
+*.zip
+*.tar.*
+*.exe
+*.pdb
+*.rdi
+snake
+compile_flags.txt

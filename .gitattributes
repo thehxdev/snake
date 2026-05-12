@@ -1,0 +1,9 @@
+* text=auto
+
+*.cpp       text
+*.md        text
+*.bat       text eol=crlf
+*.sh        text
+
+
+*.exe       binary
