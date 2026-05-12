@@ -10,3 +10,6 @@ in the project's root directory must be a directory called `raylib`. Then use
 ### Win32 Notes
 `build.bat` uses Mingw64 GCC compiler that you can download from [HERE](https://winlibs.com).
 You must download the `mingw64` version of Raylib in order to use it.
+
+## Photos
+![Screenshot](./assets/screenshot.png)
