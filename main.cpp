@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <assert.h>
+
 #include <raylib.h>
 
 struct GridVec2 {
@@ -25,9 +25,6 @@ GridVec2 grid_vec2_random(void)
 
 int main(void)
 {
-    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake!");
-    SetTargetFPS(30);
-
     srand(time(NULL));
 
     GridVec2 target_pos = grid_vec2_random();
@@ -45,12 +42,16 @@ int main(void)
     float dt_acc = 0.0f;
     bool gameover = false;
 
+    SetTraceLogLevel(LOG_INFO);
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake!");
+    SetTargetFPS(30);
+
     while (!WindowShouldClose()) {
         float dt = GetFrameTime();
         // Update
         {
             dt_acc += dt;
-            if (dt_acc >= 0.035f) {
+            if (dt_acc >= 0.045f) {
                 dt_acc = 0.0f;
                 for (int i = snake.last_idx; i > 0; i--)
                     snake.cells[i] = snake.cells[i-1];
@@ -60,6 +61,7 @@ int main(void)
                 snake_head->y = (snake_head->y + snake.vel.y) % CELL_COUNT;
                 if (snake_head->y < 0)
                     snake_head->y = CELL_COUNT - 1;
+
             }
 
             for (int i = 1; i < snake.last_idx; i++) {
