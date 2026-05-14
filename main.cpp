@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h> // for rand, srand
 #include <time.h>
 #include <assert.h>
 
