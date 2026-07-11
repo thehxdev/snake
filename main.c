@@ -5,22 +5,23 @@
 
 #include <raylib.h>
 
-struct GridVec2 {
+typedef struct {
     int x, y;
-};
+} GridVec2;
 
-const int CELL_COUNT = 20, CELL_SIZE = 40;
+#define CELL_COUNT 20
+#define CELL_SIZE 40
+
 const int WINDOW_WIDTH = CELL_COUNT * CELL_SIZE, WINDOW_HEIGHT = WINDOW_WIDTH;
 const Color TARGET_COLOR = GOLD;
 const Color SNAKE_HEAD_COLOR = SKYBLUE;
 const Color SNAKE_COLOR = BLUE;
-const Color BACKGROUND_COLOR{0x18, 0x18, 0x18, 0xff};
+const Color BACKGROUND_COLOR = {0x18, 0x18, 0x18, 0xff};
 
 GridVec2 grid_vec2_random(void)
 {
-    return GridVec2{
-        rand() % CELL_COUNT,
-        rand() % CELL_COUNT,
+    return (GridVec2) {
+        rand() % CELL_COUNT, rand() % CELL_COUNT,
     };
 }
 
@@ -36,8 +37,12 @@ int main(void)
     } snake;
 
     snake.last_idx = 0;
-    snake.cells[0] = GridVec2{CELL_COUNT/2-1, CELL_COUNT/2-1};
-    snake.vel = GridVec2{0, 0};
+    snake.cells[0] = (GridVec2) {
+        CELL_COUNT/2-1, CELL_COUNT/2-1
+    };
+    snake.vel = (GridVec2) {
+        0, 0
+    };
 
     GridVec2 *snake_head = &snake.cells[0];
     float dt_acc = 0.0f;
@@ -62,7 +67,6 @@ int main(void)
                 snake_head->y = (snake_head->y + snake.vel.y) % CELL_COUNT;
                 if (snake_head->y < 0)
                     snake_head->y = CELL_COUNT - 1;
-
             }
 
             for (int i = 1; i < snake.last_idx; i++) {

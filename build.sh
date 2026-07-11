@@ -1,8 +1,8 @@
 #!/bin/sh
 
-g++ -I./raylib/include \
-    -std=c++11 \
+gcc -I./raylib/include \
+    -std=c11 \
     -Wall -Wextra -Wshadow \
     -O2 -g3 \
-    -o snake build.cpp \
+    -o snake main.c \
     -L./raylib/lib -l:libraylib.a -lm
